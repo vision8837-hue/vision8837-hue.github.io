@@ -650,6 +650,8 @@ function onAddToCart(bookId, bookTitle, price) {
     book_title: bookTitle,
     price: price
   });
+  // 장바구니 담기 완료 시 'cart' 트리거 실행
+  FlareLane.displayInApp("cart");
 }
 
 // [6] 구매 완료 시
@@ -665,6 +667,8 @@ function onPurchaseComplete(orderId, totalPrice, itemCount) {
 // [7] 페이지 진입 시 자동 page_view 이벤트 발생
 document.addEventListener('DOMContentLoaded', function() {
   flLogEvent('page_view', { page: 'home' });
+  // ✨ 인앱메시지 노출 트리거 추가 (홈 화면 진입 시 팝업 띄우기)
+  FlareLane.displayInApp("home");
 });
 </script>
 </body>
