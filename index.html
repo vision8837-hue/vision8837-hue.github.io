@@ -226,7 +226,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
 <!-- ③ MAIN HEADER -->
 <div class="main-hd">
-  <!-- 실제 교보문고 로고 SVG -->
   <a href="https://www.kyobobook.co.kr">
     <img class="logo-img"
       src="https://contents.kyobobook.co.kr/resources/fo/images/common/ink/united/logo_book.svg"
@@ -282,7 +281,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   </div>
 </nav>
 
-<!-- ⑤ PROMO BANNER (실제 교보문고 이미지) -->
+<!-- ⑤ PROMO BANNER -->
 <a class="promo-banner" href="https://event.kyobobook.co.kr/detail/242712">
   <img src="https://contents.kyobobook.co.kr/display/i_1200_70_5c595f11a8714717ab693ffbb9e1c163.jpg"
        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
@@ -294,12 +293,18 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   </div>
 </a>
 
-<!-- ⑥ QUICK MENU (실제 교보문고 SVG 아이콘) -->
+<!-- ⑥ QUICK MENU -->
+<!--
+  ✅ 수정 포인트 1:
+  원본에서 <div class="qm"> 태그 내부에 JS 함수 코드(flLogEvent 선언)가
+  HTML 텍스트로 노출되는 버그가 있었음 → 완전히 제거.
+  onclick은 그대로 유지하고, 실제 함수 로직은 하단 <script> 블록에서 통합 관리.
+-->
 <div class="qmenu">
-  <div class="qm" onclick="flLogEvent('view_today_special', { menu: '오늘만특가' })" style="cursor: pointer;">
+  <div class="qm" onclick="flLogEvent('view_today_special', { menu: '오늘만특가' })">
     <div class="qm-ico">
-      <img src="https://contents.kyobobook.co.kr/display/PC_QM_02_64cc0909aafa42dfb07ed5ba786d2875.svg" 
-           onerror="this.parentElement.classList.add('fallback');this.remove();this.parentElement.textContent='⚡'" 
+      <img src="https://contents.kyobobook.co.kr/display/PC_QM_02_64cc0909aafa42dfb07ed5ba786d2875.svg"
+           onerror="this.parentElement.classList.add('fallback');this.remove();this.parentElement.textContent='⚡'"
            alt="오늘만특가">
     </div>
     <span class="qm-lbl">오늘만<br>특가</span>
@@ -361,8 +366,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   </div>
 
   <div class="today-grid">
-    <!-- 실제 교보문고 책 이미지 -->
-    <div class="bk">
+    <div class="bk" onclick="onBookView('9791173577116', '대한민국 교육 키워드', '교육')">
       <div class="bk-thumb">
         <img src="https://contents.kyobobook.co.kr/sih/fit-in/300x0/filters:format(webp)/pdt/9791173577116.jpg" onerror="this.remove();this.parentElement.classList.add('c1');this.parentElement.innerHTML+='<div class=spine></div><div class=emo>📗</div>'" alt="대한민국 교육 키워드">
         <div class="bk-md">MD선택</div>
@@ -371,7 +375,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <div class="bk-author">이범 · 상상스퀘어</div>
       <div class="bk-price"><span class="bk-dc">10%</span><span class="bk-won">17,100원</span></div>
     </div>
-    <div class="bk">
+    <div class="bk" onclick="onBookView('9788925572727', '불안이 습관이 되지 않게', '자기계발')">
       <div class="bk-thumb">
         <img src="https://contents.kyobobook.co.kr/sih/fit-in/300x0/filters:format(webp)/pdt/9788925572727.jpg" onerror="this.remove();this.parentElement.classList.add('c2');this.parentElement.innerHTML+='<div class=spine></div><div class=emo>📘</div>'" alt="불안이 습관이 되지 않게">
       </div>
@@ -379,7 +383,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <div class="bk-author">롤프 젤린 · 흐름출판</div>
       <div class="bk-price"><span class="bk-dc">10%</span><span class="bk-won">15,300원</span></div>
     </div>
-    <div class="bk">
+    <div class="bk" onclick="onBookView('9791156628088', '검은 기적', '소설')">
       <div class="bk-thumb">
         <img src="https://contents.kyobobook.co.kr/sih/fit-in/300x0/filters:format(webp)/pdt/9791156628088.jpg" onerror="this.remove();this.parentElement.classList.add('c3');this.parentElement.innerHTML+='<div class=spine></div><div class=emo>📙</div>'" alt="검은 기적">
       </div>
@@ -387,7 +391,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <div class="bk-author">백온유 · 문학동네</div>
       <div class="bk-price"><span class="bk-dc">10%</span><span class="bk-won">13,500원</span></div>
     </div>
-    <div class="bk">
+    <div class="bk" onclick="onBookView('9798217233960', 'KPop Demon Hunters', '외국도서')">
       <div class="bk-thumb">
         <img src="https://contents.kyobobook.co.kr/sih/fit-in/300x0/filters:format(webp)/pdt/9798217233960.jpg" onerror="this.remove();this.parentElement.classList.add('c4');this.parentElement.innerHTML+='<div class=spine></div><div class=emo>📕</div>'" alt="KPop Demon Hunters">
       </div>
@@ -395,7 +399,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <div class="bk-author">Scholastic</div>
       <div class="bk-price"><span class="bk-dc">10%</span><span class="bk-won">31,500원</span></div>
     </div>
-    <div class="bk">
+    <div class="bk" onclick="onBookView('trend2026', '트렌드 코리아 2026', '경제경영')">
       <div class="bk-thumb c5" style="display:flex;align-items:center;justify-content:center;position:relative;">
         <div class="spine"></div><div class="emo">📒</div>
       </div>
@@ -405,7 +409,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     </div>
   </div>
 
-  <!-- 광고 배너 2개 (실제 교보문고 이미지) -->
+  <!-- 광고 배너 -->
   <div class="ad-row">
     <div class="ad-card">
       <img src="https://contents.kyobobook.co.kr/advrcntr/IMAC/creatives/2025/12/26/56316/welcome-main-595x180.png"
@@ -427,35 +431,35 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <a class="more" href="https://store.kyobobook.co.kr/bestseller/online/daily">더보기</a>
       </div>
       <div class="best-list">
-        <div class="bi"><span class="bi-rank r1">1</span>
+        <div class="bi" onclick="onBookView('reverse', '역행자', '자기계발')"><span class="bi-rank r1">1</span>
           <div class="bi-img c1"><div class="sp"></div><div class="em">📗</div></div>
           <div class="bi-info"><div class="bi-ttl">역행자</div><div class="bi-auth">자청 · 웅진지식하우스</div></div>
           <span class="bi-p">16,200원</span></div>
-        <div class="bi"><span class="bi-rank r2">2</span>
+        <div class="bi" onclick="onBookView('vegetarian', '채식주의자', '소설')"><span class="bi-rank r2">2</span>
           <div class="bi-img c2"><div class="sp"></div><div class="em">📘</div></div>
           <div class="bi-info"><div class="bi-ttl">채식주의자</div><div class="bi-auth">한강 · 창비</div></div>
           <span class="bi-p">12,600원</span></div>
-        <div class="bi"><span class="bi-rank r3">3</span>
+        <div class="bi" onclick="onBookView('atomic', '아주 작은 습관의 힘', '자기계발')"><span class="bi-rank r3">3</span>
           <div class="bi-img c3"><div class="sp"></div><div class="em">📙</div></div>
           <div class="bi-info"><div class="bi-ttl">아주 작은 습관의 힘</div><div class="bi-auth">제임스 클리어</div></div>
           <span class="bi-p">17,100원</span></div>
-        <div class="bi"><span class="bi-rank">4</span>
+        <div class="bi" onclick="onBookView('convenient', '불편한 편의점', '소설')"><span class="bi-rank">4</span>
           <div class="bi-img c4"><div class="sp"></div><div class="em">📕</div></div>
           <div class="bi-info"><div class="bi-ttl">불편한 편의점</div><div class="bi-auth">김호연 · 나무옆의자</div></div>
           <span class="bi-p">13,500원</span></div>
-        <div class="bi"><span class="bi-rank">5</span>
+        <div class="bi" onclick="onBookView('pachinko', '파친코', '소설')"><span class="bi-rank">5</span>
           <div class="bi-img c5"><div class="sp"></div><div class="em">📒</div></div>
           <div class="bi-info"><div class="bi-ttl">파친코</div><div class="bi-auth">이민진 · 인플루엔셜</div></div>
           <span class="bi-p">15,750원</span></div>
-        <div class="bi"><span class="bi-rank">6</span>
+        <div class="bi" onclick="onBookView('littleprince', '어린 왕자', '소설')"><span class="bi-rank">6</span>
           <div class="bi-img c6"><div class="sp"></div><div class="em">📓</div></div>
           <div class="bi-info"><div class="bi-ttl">어린 왕자</div><div class="bi-auth">생텍쥐페리 · 열린책들</div></div>
           <span class="bi-p">9,900원</span></div>
-        <div class="bi"><span class="bi-rank">7</span>
+        <div class="bi" onclick="onBookView('trend2026', '트렌드 코리아 2026', '경제경영')"><span class="bi-rank">7</span>
           <div class="bi-img c7"><div class="sp"></div><div class="em">📗</div></div>
           <div class="bi-info"><div class="bi-ttl">트렌드 코리아 2026</div><div class="bi-auth">김난도 외 · 미래의창</div></div>
           <span class="bi-p">19,800원</span></div>
-        <div class="bi"><span class="bi-rank">8</span>
+        <div class="bi" onclick="onBookView('stolen', '도둑맞은 집중력', '자기계발')"><span class="bi-rank">8</span>
           <div class="bi-img c8"><div class="sp"></div><div class="em">📘</div></div>
           <div class="bi-info"><div class="bi-ttl">도둑맞은 집중력</div><div class="bi-auth">요한 하리 · 어크로스</div></div>
           <span class="bi-p">17,820원</span></div>
@@ -467,35 +471,35 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <a class="more" href="https://store.kyobobook.co.kr/bestseller/realtime">더보기</a>
       </div>
       <div class="best-list">
-        <div class="bi"><span class="bi-rank r1">1</span>
+        <div class="bi" onclick="onBookView('9791173577116', '대한민국 교육 키워드', '교육')"><span class="bi-rank r1">1</span>
           <div class="bi-img c9"><div class="sp"></div><div class="em">📙</div></div>
           <div class="bi-info"><div class="bi-ttl">대한민국 교육 키워드</div><div class="bi-auth">이범 · 상상스퀘어</div></div>
           <span class="bi-p">17,100원</span></div>
-        <div class="bi"><span class="bi-rank r2">2</span>
+        <div class="bi" onclick="onBookView('9788925572727', '불안이 습관이 되지 않게', '자기계발')"><span class="bi-rank r2">2</span>
           <div class="bi-img c10"><div class="sp"></div><div class="em">📕</div></div>
           <div class="bi-info"><div class="bi-ttl">불안이 습관이 되지 않게</div><div class="bi-auth">롤프 젤린</div></div>
           <span class="bi-p">15,300원</span></div>
-        <div class="bi"><span class="bi-rank r3">3</span>
+        <div class="bi" onclick="onBookView('9791156628088', '검은 기적', '소설')"><span class="bi-rank r3">3</span>
           <div class="bi-img c1"><div class="sp"></div><div class="em">📒</div></div>
           <div class="bi-info"><div class="bi-ttl">검은 기적</div><div class="bi-auth">백온유 · 문학동네</div></div>
           <span class="bi-p">13,500원</span></div>
-        <div class="bi"><span class="bi-rank">4</span>
+        <div class="bi" onclick="onBookView('myself', '나는 나로 살기로 했다', '에세이')"><span class="bi-rank">4</span>
           <div class="bi-img c2"><div class="sp"></div><div class="em">📓</div></div>
           <div class="bi-info"><div class="bi-ttl">나는 나로 살기로 했다</div><div class="bi-auth">김수현 · 마음의숲</div></div>
           <span class="bi-p">14,400원</span></div>
-        <div class="bi"><span class="bi-rank">5</span>
+        <div class="bi" onclick="onBookView('kimjiyoung', '82년생 김지영', '소설')"><span class="bi-rank">5</span>
           <div class="bi-img c3"><div class="sp"></div><div class="em">📗</div></div>
           <div class="bi-info"><div class="bi-ttl">82년생 김지영</div><div class="bi-auth">조남주 · 민음사</div></div>
           <span class="bi-p">12,600원</span></div>
-        <div class="bi"><span class="bi-rank">6</span>
+        <div class="bi" onclick="onBookView('midnight', '미드나잇 라이브러리', '소설')"><span class="bi-rank">6</span>
           <div class="bi-img c4"><div class="sp"></div><div class="em">📘</div></div>
           <div class="bi-info"><div class="bi-ttl">미드나잇 라이브러리</div><div class="bi-auth">매트 헤이그</div></div>
           <span class="bi-p">16,200원</span></div>
-        <div class="bi"><span class="bi-rank">7</span>
+        <div class="bi" onclick="onBookView('money', '돈의 속성', '경제경영')"><span class="bi-rank">7</span>
           <div class="bi-img c5"><div class="sp"></div><div class="em">📙</div></div>
           <div class="bi-info"><div class="bi-ttl">돈의 속성</div><div class="bi-auth">김승호 · 스노우폭스북스</div></div>
           <span class="bi-p">19,800원</span></div>
-        <div class="bi"><span class="bi-rank">8</span>
+        <div class="bi" onclick="onBookView('tolle', '지금 이 순간을 살아라', '자기계발')"><span class="bi-rank">8</span>
           <div class="bi-img c6"><div class="sp"></div><div class="em">📕</div></div>
           <div class="bi-info"><div class="bi-ttl">지금 이 순간을 살아라</div><div class="bi-auth">에크하르트 톨레</div></div>
           <span class="bi-p">14,400원</span></div>
@@ -509,12 +513,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <a class="more" href="https://product.kyobobook.co.kr/new/">더보기</a>
   </div>
   <div class="new-grid">
-    <div class="nb"><div class="nb-thumb c1" style="position:relative;display:flex;align-items:center;justify-content:center;"><div class="sp"></div><div class="em">📗</div></div><div class="nb-ttl">소년이 온다</div><div class="nb-auth">한강 · 창비</div><div class="nb-p"><span class="nb-dc">10% </span>12,600원</div></div>
-    <div class="nb"><div class="nb-thumb c2" style="position:relative;display:flex;align-items:center;justify-content:center;"><div class="sp"></div><div class="em">📘</div></div><div class="nb-ttl">작별하지 않는다</div><div class="nb-auth">한강 · 문학동네</div><div class="nb-p"><span class="nb-dc">10% </span>15,300원</div></div>
-    <div class="nb"><div class="nb-thumb c3" style="position:relative;display:flex;align-items:center;justify-content:center;"><div class="sp"></div><div class="em">📙</div></div><div class="nb-ttl">우리가 빛의 속도로 갈 수 없다면</div><div class="nb-auth">김초엽 · 허블</div><div class="nb-p"><span class="nb-dc">10% </span>14,400원</div></div>
-    <div class="nb"><div class="nb-thumb c4" style="position:relative;display:flex;align-items:center;justify-content:center;"><div class="sp"></div><div class="em">📕</div></div><div class="nb-ttl">지구 끝의 온실</div><div class="nb-auth">김초엽 · 자이언트북스</div><div class="nb-p"><span class="nb-dc">10% </span>15,300원</div></div>
-    <div class="nb"><div class="nb-thumb c5" style="position:relative;display:flex;align-items:center;justify-content:center;"><div class="sp"></div><div class="em">📒</div></div><div class="nb-ttl">달러구트 꿈 백화점</div><div class="nb-auth">이미예 · 팩토리나인</div><div class="nb-p"><span class="nb-dc">10% </span>14,220원</div></div>
-    <div class="nb"><div class="nb-thumb c6" style="position:relative;display:flex;align-items:center;justify-content:center;"><div class="sp"></div><div class="em">📓</div></div><div class="nb-ttl">보건교사 안은영</div><div class="nb-auth">정세랑 · 민음사</div><div class="nb-p"><span class="nb-dc">10% </span>13,500원</div></div>
+    <div class="nb" onclick="onBookView('boycoming', '소년이 온다', '소설')"><div class="nb-thumb c1" style="position:relative;display:flex;align-items:center;justify-content:center;"><div class="sp"></div><div class="em">📗</div></div><div class="nb-ttl">소년이 온다</div><div class="nb-auth">한강 · 창비</div><div class="nb-p"><span class="nb-dc">10% </span>12,600원</div></div>
+    <div class="nb" onclick="onBookView('farewell', '작별하지 않는다', '소설')"><div class="nb-thumb c2" style="position:relative;display:flex;align-items:center;justify-content:center;"><div class="sp"></div><div class="em">📘</div></div><div class="nb-ttl">작별하지 않는다</div><div class="nb-auth">한강 · 문학동네</div><div class="nb-p"><span class="nb-dc">10% </span>15,300원</div></div>
+    <div class="nb" onclick="onBookView('lightspeed', '우리가 빛의 속도로 갈 수 없다면', 'SF')"><div class="nb-thumb c3" style="position:relative;display:flex;align-items:center;justify-content:center;"><div class="sp"></div><div class="em">📙</div></div><div class="nb-ttl">우리가 빛의 속도로 갈 수 없다면</div><div class="nb-auth">김초엽 · 허블</div><div class="nb-p"><span class="nb-dc">10% </span>14,400원</div></div>
+    <div class="nb" onclick="onBookView('greenhouse', '지구 끝의 온실', 'SF')"><div class="nb-thumb c4" style="position:relative;display:flex;align-items:center;justify-content:center;"><div class="sp"></div><div class="em">📕</div></div><div class="nb-ttl">지구 끝의 온실</div><div class="nb-auth">김초엽 · 자이언트북스</div><div class="nb-p"><span class="nb-dc">10% </span>15,300원</div></div>
+    <div class="nb" onclick="onBookView('dreamstore', '달러구트 꿈 백화점', '소설')"><div class="nb-thumb c5" style="position:relative;display:flex;align-items:center;justify-content:center;"><div class="sp"></div><div class="em">📒</div></div><div class="nb-ttl">달러구트 꿈 백화점</div><div class="nb-auth">이미예 · 팩토리나인</div><div class="nb-p"><span class="nb-dc">10% </span>14,220원</div></div>
+    <div class="nb" onclick="onBookView('nurse', '보건교사 안은영', '소설')"><div class="nb-thumb c6" style="position:relative;display:flex;align-items:center;justify-content:center;"><div class="sp"></div><div class="em">📓</div></div><div class="nb-ttl">보건교사 안은영</div><div class="nb-auth">정세랑 · 민음사</div><div class="nb-p"><span class="nb-dc">10% </span>13,500원</div></div>
   </div>
 
 </div><!-- /wrap -->
@@ -548,8 +552,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   </div>
 </div>
 
+<!-- 탭 전환 -->
 <script>
-// 탭 전환
 document.querySelectorAll('.stab').forEach(t=>{
   t.addEventListener('click',function(){
     this.closest('.sec-tabs').querySelectorAll('.stab').forEach(x=>x.classList.remove('on'));
@@ -559,35 +563,45 @@ document.querySelectorAll('.stab').forEach(t=>{
 </script>
 
 <!-- ============================================================
-  ✅ FlareLane Web SDK 연동 (공식 가이드 준수)
+  ✅ FlareLane Web SDK 연동
   출처: https://docs.flarelane.co.kr/web-push-integration
-
-  [연동 전 필수 작업 - 개발자 체크리스트]
-  ① FlareLane 콘솔(https://console.flarelane.com) 접속 및 프로젝트 생성
-  ② [채널] > [웹 푸시] 에서 웹사이트 도메인 등록
-  ③ sw.js 파일 다운로드 후 루트 경로에 업로드
-     (yourdomain.com/sw.js 로 외부 접근 가능해야 함)
-     다운로드: https://gp.flarelane.com/sw.js
-  ④ 아래 "YOUR_PROJECT_ID" 를 콘솔 [프로젝트] 페이지의 실제 ID로 교체
 ============================================================ -->
-
-<!-- FlareLane CDN SDK 로드 (공식 가이드 Step 3) -->
 <script src="https://cdn.flarelane.com/WebSDK.js" charset="UTF-8"></script>
 
 <script>
 // ============================================================
-// SDK 초기화 (</body> 바로 위 - 공식 가이드 Step 3)
-// projectId: FlareLane 콘솔 > [프로젝트] 페이지에서 확인
+// SDK 초기화
 // ============================================================
 FlareLane.initialize({
   projectId: "cc2ba865-d0f9-4a5f-9cbe-feec9ff169cb"
-  // sw.js를 루트 외 경로에 업로드한 경우 아래 옵션 추가
-  // serviceWorkerPath: "/sw.js"
 });
 
 // ============================================================
-// 유저 ID 연동 헬퍼 (공식 가이드 Step 4)
-// 회원가입/로그인 성공 시 호출 → 익명기기와 유저 매칭
+// ✅ 수정 포인트 2:
+// 원본에서 flLogEvent가 HTML 안(퀵메뉴)과 <script> 블록에 중복 선언되어,
+// 하단 버전이 HTML 버전을 덮어쓰면서 displayInApp("special_offer")가
+// 동작하지 않는 버그 발생.
+// → 함수를 하나로 통합하고, 이벤트별 인앱메시지 트리거를
+//   inAppTriggers 객체에서 중앙 관리.
+// ============================================================
+
+// 이벤트 발생 + 인앱메시지 트리거 통합 관리
+function flLogEvent(eventName, params) {
+  FlareLane.logEvent(eventName, params || {});
+
+  // 이벤트명 → 인앱메시지 트리거 이름 매핑
+  // 추가 연동이 필요하면 여기에 한 줄만 추가하면 됨
+  const inAppTriggers = {
+    'view_today_special': 'special_offer', // 오늘만특가 메뉴 클릭 시
+  };
+
+  if (inAppTriggers[eventName]) {
+    FlareLane.displayInApp(inAppTriggers[eventName]);
+  }
+}
+
+// ============================================================
+// 유저 ID 연동 헬퍼
 // ============================================================
 function flSetUserId(userId) {
   FlareLane.setUserId(userId);
@@ -595,28 +609,16 @@ function flSetUserId(userId) {
 
 // ============================================================
 // 태그(유저 속성) 연동 헬퍼
-// 이름, 회원등급, 마케팅 수신 동의 등 유저 속성 데이터 연동
-// 공식 가이드: FlareLane.setTags({ key: value })
 // ============================================================
 function flSetTags(tags) {
   FlareLane.setTags(tags);
 }
 
 // ============================================================
-// 이벤트 연동 헬퍼
-// 장바구니 추가, 구매, 회원가입 등 유저 행동 이벤트 수집
-// 공식 가이드: FlareLane.logEvent("event_name", params)
-// ============================================================
-function flLogEvent(eventName, params) {
-  FlareLane.logEvent(eventName, params || {});
-}
-
-// ============================================================
-// 교보문고 서비스 이벤트 연동 함수 모음
-// 아래 함수를 실제 이벤트 발생 시점에 호출하세요
+// 교보문고 서비스 이벤트 연동 함수
 // ============================================================
 
-// [1] 회원가입 완료 시 → 유저ID + 태그 + 이벤트 한꺼번에 연동
+// [1] 회원가입 완료
 function onSignupComplete(userId, userName, grade) {
   flSetUserId(userId);
   flSetTags({
@@ -627,18 +629,18 @@ function onSignupComplete(userId, userName, grade) {
   flLogEvent('signup_complete', { grade: grade });
 }
 
-// [2] 로그인 성공 시 → 유저ID 연동
+// [2] 로그인 성공
 function onLoginSuccess(userId) {
   flSetUserId(userId);
   flLogEvent('login');
 }
 
-// [3] 로그아웃 시 → 유저ID null 로 해제
+// [3] 로그아웃
 function onLogout() {
   FlareLane.setUserId(null);
 }
 
-// [4] 도서 상세 조회 시 → 관심 카테고리 파악
+// [4] 도서 상세 조회 → 책 클릭 시 호출
 function onBookView(bookId, bookTitle, category) {
   flLogEvent('book_view', {
     book_id: bookId,
@@ -647,18 +649,17 @@ function onBookView(bookId, bookTitle, category) {
   });
 }
 
-// [5] 장바구니 추가 시
+// [5] 장바구니 추가
 function onAddToCart(bookId, bookTitle, price) {
   flLogEvent('add_to_cart', {
     book_id: bookId,
     book_title: bookTitle,
     price: price
   });
-  // 장바구니 담기 완료 시 'cart' 트리거 실행
   FlareLane.displayInApp("cart");
 }
 
-// [6] 구매 완료 시
+// [6] 구매 완료
 function onPurchaseComplete(orderId, totalPrice, itemCount) {
   flLogEvent('purchase', {
     order_id: orderId,
@@ -668,10 +669,11 @@ function onPurchaseComplete(orderId, totalPrice, itemCount) {
   flSetTags({ last_purchase_date: new Date().toISOString().slice(0, 10) });
 }
 
-// [7] 페이지 진입 시 자동 page_view 이벤트 발생
+// ============================================================
+// 페이지 진입 시 자동 이벤트
+// ============================================================
 document.addEventListener('DOMContentLoaded', function() {
   flLogEvent('page_view', { page: 'home' });
-  // ✨ 인앱메시지 노출 트리거 추가 (홈 화면 진입 시 팝업 띄우기)
   FlareLane.displayInApp("home");
 });
 </script>
