@@ -296,8 +296,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
 <!-- ⑥ QUICK MENU (실제 교보문고 SVG 아이콘) -->
 <div class="qmenu">
-  <div class="qm">
-    <div class="qm-ico"><img src="https://contents.kyobobook.co.kr/display/PC_QM_02_64cc0909aafa42dfb07ed5ba786d2875.svg" onerror="this.parentElement.classList.add('fallback');this.remove();this.parentElement.textContent='⚡'" alt="오늘만특가"></div>
+  <div class="qm" onclick="flLogEvent('view_today_special', { menu: '오늘만특가' })" style="cursor: pointer;">
+    <div class="qm-ico">
+      <img src="https://contents.kyobobook.co.kr/display/PC_QM_02_64cc0909aafa42dfb07ed5ba786d2875.svg" 
+           onerror="this.parentElement.classList.add('fallback');this.remove();this.parentElement.textContent='⚡'" 
+           alt="오늘만특가">
+    </div>
     <span class="qm-lbl">오늘만<br>특가</span>
   </div>
   <div class="qm">
